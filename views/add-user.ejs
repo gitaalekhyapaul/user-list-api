@@ -6,10 +6,10 @@
   <div class="container mx-auto col-lg-6 card-lists">
     <div class="card add-user-form">
       <div class="card-header text-center">
-        <h4 class="mt-0 mb-0">Add User</h4>
+        <h4 class="mt-0 mb-0"><%= edit ? 'Edit User' : 'Add User' %></h4>
       </div>
       <div class="card-body">
-        <form method="POST" action="/gogaga/add">
+        <form method="POST" action="<%= path === 'add' ? '/gogaga/add' : '/gogaga/editUser' %>">
           <div class="form-row text-center">
             <div class="input-group mb-2 col-lg-6">
               <div class="input-group-prepend">
@@ -22,7 +22,11 @@
                   </svg>
                 </div>
               </div>
-              <input type="text" class="form-control" name="name" placeholder="Name" required>
+              <% if(edit){ %>
+                <input type="text" class="form-control" name="name" value="<%= user.name %>" required readonly>
+              <% }else{ %>
+                <input type="text" class="form-control" name="name" placeholder="Name" required>
+              <% } %>
             </div>
             <div class="input-group mb-2 col-lg-6">
               <div class="input-group-prepend">
@@ -38,7 +42,11 @@
                   </svg>
                 </div>
               </div>
-              <input type="number" min="1" class="form-control" name="age" placeholder="Age" required>
+              <% if(edit){ %>
+                <input type="number" min="1" class="form-control" name="age" value="<%= user.age %>" required readonly>
+              <% }else{ %>
+                <input type="number" min="1" class="form-control" name="age" placeholder="Age" required>
+              <% } %>
             </div>
             <div class="input-group mb-2 mt-2 col-lg-12">
               <div class="input-group-prepend">
@@ -46,9 +54,16 @@
                   About You
                 </div>
               </div>
-              <textarea class="form-control col-lg-12" name="about" id="about" aria-label="About" required></textarea>
+              <% if(edit){ %>
+                <textarea class="form-control col-lg-12" name="about" id="about" aria-label="About" required><%= user.about %></textarea>
+              <% }else{ %>
+                <textarea class="form-control col-lg-12" name="about" id="about" aria-label="About" required></textarea>
+              <% } %>
             </div>
             <div class="input-group mb-2 mt-4 col-lg-12 d-block">
+              <% if(edit){ %>
+                <input type="hidden" name="id" value="<%= user._id %>">
+              <% } %>
               <div class="btn-group float-right" role="group" aria-label="Submit Button">
                 <button type="submit" class="btn btn-primary">Submit</button>     
               </div>

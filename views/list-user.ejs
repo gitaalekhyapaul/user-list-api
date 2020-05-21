@@ -29,7 +29,10 @@
               <h5 class="font-weight-bold">About:</h5>
               <p class="text-justify"><%= user.about %></p>
               <div class="btn-group float-right" role="group" aria-label="Update and Delete Buttons">
-                <form class="form-inline mr-1"><button type="button" class="btn btn-primary">Update</button></form>
+                <form class="form-inline mr-1" method="GET" action="/gogaga/editUser">
+                  <input type="hidden" name="id" value="<%= user._id %>">
+                  <button type="submit" class="btn btn-primary">Update</button>
+                </form>
                 <form class="form-inline" method="POST" action="/gogaga/deleteUser">
                   <input type="hidden" name="id" value="<%= user._id %>">
                   <button type="submit" class="btn btn-danger">Delete</button>

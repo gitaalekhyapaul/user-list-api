@@ -3,7 +3,8 @@ const User = require("../models/user");
 exports.getAdd = (req, res, next) => {
   res.render("add-user", {
     pageTitle: "Add Users",
-    path: "add"
+    path: "add",
+    edit: false,
   });
 };
 
@@ -44,5 +45,30 @@ exports.postAdd = async (req, res, next) => {
 exports.deleteUser = async (req, res, next) => {
   const id = req.body.id;
   const result = await User.findByIdAndRemove(id);
+  res.redirect("/");
+}
+
+exports.getEditUser = async (req, res, next) => {
+  const user  = await User.findById(req.query.id).select("name age about _id");
+  if(!user){
+    return res.redirect("/");
+  }
+  console.log(user);
+  res.render("add-user", {
+    pageTitle: "Add Users",
+    path: "edit",
+    edit: true,
+    user: user
+  });
+}
+
+exports.postEditUser = async (req, res, next) => {
+  const updateId = req.body.id;
+  const updatedAbout = req.body.about;
+  const result = await User.findByIdAndUpdate(updateId, {
+    $set: {
+      about: updatedAbout
+    }
+  });
   res.redirect("/");
 }

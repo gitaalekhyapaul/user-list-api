@@ -1,20 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add User</title>
-  </head>
-  <body>
-    <h1>Add User</h1>
-    <form method="POST" action="/gogaga/add">
-      <label for="name">Name</label>
-      <input name="name" id="name" type="text" />
-      <label for="age">Age</label>
-      <input name="age" id="age" type="text" />
-      <label for="about">About</label>
-      <textarea name="about" id="about"></textarea>
-      <button type="submit">Submit</button>
-    </form>
-  </body>
-</html>
+<%- include('includes/head.ejs') %>
+</head>
+
+<body>
+  <%- include('includes/navbar.ejs') %>
+  <div class="container mx-auto col-lg-6 card-lists">
+    <div class="card add-user-form">
+      <div class="card-header text-center">
+        <h4 class="mt-0 mb-0">Add User</h4>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="/gogaga/add">
+          <div class="form-row text-center">
+            <div class="input-group mb-2 col-lg-6">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <svg class="bi bi-person" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 00.014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 00.022.004zm9.974.056v-.002.002zM8 7a2 2 0 100-4 2 2 0 000 4zm3-2a3 3 0 11-6 0 3 3 0 016 0z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+              <input type="text" class="form-control" name="name" placeholder="Name" required>
+            </div>
+            <div class="input-group mb-2 col-lg-6">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <svg class="bi bi-calendar" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M14 0H2a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"
+                      clip-rule="evenodd" />
+                    <path fill-rule="evenodd"
+                      d="M6.5 7a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm-9 3a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2zm3 0a1 1 0 100-2 1 1 0 000 2z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </div>
+              </div>
+              <input type="number" min="1" class="form-control" name="age" placeholder="Age" required>
+            </div>
+            <div class="input-group mb-2 mt-2 col-lg-12">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  About You
+                </div>
+              </div>
+              <textarea class="form-control col-lg-12" name="about" id="about" aria-label="About" required></textarea>
+            </div>
+            <div class="input-group mb-2 mt-4 col-lg-12 d-block">
+              <div class="btn-group float-right" role="group" aria-label="Submit Button">
+                <button type="submit" class="btn btn-primary">Submit</button>     
+              </div>
+            </div>
+          </div>
+      </div>
+      </form>
+    </div>
+  </div>
+  </div>
+  <%- include('includes/end.ejs') %>

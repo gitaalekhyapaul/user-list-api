@@ -23,7 +23,10 @@ app.get("/", (req, res, next) => {
   res.redirect("/gogaga/list");
 });
 app.get("/*", (req, res, next) => {
-  res.render("404");
+  res.render("404", {
+    pageTitle: "404: Page Not Found",
+    path: "404"
+  });
 });
 
 mongoose

@@ -1,0 +1,37 @@
+.hidden {
+  display: none !important;
+}
+.card-lists {
+  margin-top: 5rem;
+}
+.card-header h4 {
+  display: inline-block;
+}
+.card_list_nav {
+  margin-top: 17rem;
+}
+.add-user-form{
+    margin-top: 25vh;
+    border: 0.1rem solid #5bc0de;
+    box-shadow: 0 0 1rem 0.1rem #5bc0de;
+}
+.add-user-form > .card-header{
+    background-color: #5bc0de8a ;
+}
+.active{
+    background-color: #3a7f94 !important;
+}
+.card-404{
+  margin-top: 25vh;
+  border: 0.1rem solid red;
+  box-shadow: 0 0 1rem 0.1rem red;
+}
+.no_user{
+  margin-top: 25vh;
+}
+
+@media (min-width: 576px) {
+  .card_list_nav {
+    margin-top: 15rem;
+  }
+}

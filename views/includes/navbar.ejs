@@ -1,0 +1,28 @@
+<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+      <span class="text-info">GoGaga Users</span>
+      <svg class="bi bi-people-circle text-info" width="1.5rem" height="1.5rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13.468 12.37C12.758 11.226 11.195 10 8 10s-4.757 1.225-5.468 2.37A6.987 6.987 0 008 15a6.987 6.987 0 005.468-2.63z"/>
+        <path fill-rule="evenodd" d="M8 9a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+        <path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zM0 8a8 8 0 1116 0A8 8 0 010 8z" clip-rule="evenodd"/>
+      </svg>
+    </a>
+    <button class="navbar-toggler mobile_nav" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse show" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto nav-pills">
+        <li class="nav-item mr-sm-2 mt-2 mt-md-auto">
+          <a class="nav-link pl-2 px-md-auto <%= path === 'list' ? 'active' : '' %>" href="/">List Users <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item mr-sm-2">
+          <a class="nav-link pl-2 px-md-auto <%= path === 'add' ? 'active' : '' %>" href="/gogaga/add">Add Users</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0 <%= path !== 'list' ? 'hidden' : '' %>" method="POST" action="/gogaga/list">
+        <input class="form-control mr-sm-2" name="name_search" placeholder="Search User By Name" aria-label="Search">
+        <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>

@@ -1,22 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>List User</title>
-  </head>
-  <body>
-    <h1>List User</h1>
-    <ul>
-      <% users.forEach(user => { %>
-      <li>
-        <ul>
-          <li>Name: <%= user.name %></li>
-          <li>Age: <%= user.age %></li>
-          <li>About: <%= user.about %></li>
-        </ul>
-      </li>
-      <% }); %>
-    </ul>
-  </body>
-</html>
+<%- include('includes/head.ejs') %>
+</head>
+
+<body>
+  <%- include('includes/navbar.ejs') %>
+  <% if(users.length > 0){ %>
+  <div class="container card-lists">
+      <div class="accordion" id="accordion">
+        <% users.forEach(user => { %>
+        <div class="card mb-2">
+          <div class="card-header" id="heading__<%= user._id %>">
+            <h4 class="mb-0 mt-1"><%= user.name %></h4>
+            <h4 class="mb-0 mt-0 float-right">
+              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse__<%= user._id %>"
+                aria-expanded="true" aria-controls="collapse__<%= user._id %>">
+                <svg class="bi bi-plus-square-fill text-info" width="1.5rem" height="1.5rem" viewBox="0 0 16 16"
+                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2zm6.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z"
+                    clip-rule="evenodd" />
+                </svg>
+              </button>
+            </h4>
+          </div>
+
+          <div id="collapse__<%= user._id %>" class="collapse <%= search ? '' : 'show' %>" aria-labelledby="heading__<%= user._id %>" data-parent="#accordion">
+            <div class="card-body">
+              <h5><span class="font-weight-bold">Age:</span> <%= user.age %></h5>
+              <h5 class="font-weight-bold">About:</h5>
+              <p class="text-justify"><%= user.about %></p>
+              <div class="btn-group float-right" role="group" aria-label="Update and Delete Buttons">
+                <form class="form-inline mr-1"><button type="button" class="btn btn-primary">Update</button></form>
+                <form class="form-inline" method="POST" action="/gogaga/deleteUser">
+                  <input type="hidden" name="id" value="<%= user._id %>">
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>             
+              </div>
+            </div>
+          </div>
+        </div>
+        <% }) %>
+        <div class="d-block text-center pt-2 <%= search ? 'visible' : 'invisible' %>">
+          <div class="btn-group" role="group" aria-label="Submit Button">
+            <a href="/"><button class="btn btn-success">All Users</button></a>     
+          </div>
+        </div>
+      </div>
+    <% }else if(search){ %>
+      <div class="no_user d-block text-center">
+        <div class="display-1">No User Found.</div>
+        <div class="btn-group" role="group" aria-label="Submit Button">
+          <a href="/"><button class="btn btn-success">Go Back</button></a>     
+        </div>
+      </div>
+    <% }else{ %>
+      <div class="no_user d-block text-center">
+        <div class="display-1">No Users.</div>
+        <div class="btn-group" role="group" aria-label="Submit Button">
+          <a href="/gogaga/add"><button class="btn btn-success">Add Users</button></a>     
+        </div>
+      </div>
+    <% } %>
+  </div>
+
+  <%- include('includes/end.ejs') %>

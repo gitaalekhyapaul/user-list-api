@@ -28,7 +28,7 @@
               <h5><span class="font-weight-bold">Age:</span> <%= user.age %></h5>
               <h5 class="font-weight-bold">About:</h5>
               <p class="text-justify"><%= user.about %></p>
-              <div class="btn-group float-right" role="group" aria-label="Update and Delete Buttons">
+              <div class="btn-group float-right mb-2" role="group" aria-label="Update and Delete Buttons">
                 <form class="form-inline mr-1" method="GET" action="/gogaga/editUser">
                   <input type="hidden" name="id" value="<%= user._id %>">
                   <button type="submit" class="btn btn-primary">Update</button>

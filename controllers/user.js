@@ -11,7 +11,7 @@ exports.getAdd = (req, res, next) => {
 exports.getList = async (req, res, next) => {
   const users = await User.find().select("name age about _id");
   res.render("list-user", {
-    pageTitle: "List Users",
+    pageTitle: "GoGaga Users",
     users: users,
     path: "list",
     search: false
@@ -53,7 +53,6 @@ exports.getEditUser = async (req, res, next) => {
   if(!user){
     return res.redirect("/");
   }
-  console.log(user);
   res.render("add-user", {
     pageTitle: "Add Users",
     path: "edit",

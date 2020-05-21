@@ -1,3 +1,6 @@
+body{
+  background-color: #5bc0de54;
+}
 .hidden {
   display: none !important;
 }
@@ -23,8 +26,12 @@
 }
 .card-404{
   margin-top: 25vh;
+}
+.card-404 > .card{
   border: 0.1rem solid red;
-  box-shadow: 0 0 1rem 0.1rem red;
+  border-radius: 1em;
+  box-shadow: 0 0 1rem 0.5rem red;
+  background-color: rgba(255, 0, 0, 0.137);
 }
 .no_user{
   margin-top: 15rem;

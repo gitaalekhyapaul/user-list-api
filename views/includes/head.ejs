@@ -9,5 +9,15 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/css/stylesheet.css">
+    <link rel="stylesheet" href="/css/stylesheet.css" />
     <title><%= pageTitle %></title>
+    <script>
+      document.onreadystatechange = () => {
+        if (document.readyState !== "complete") {
+          document.querySelector("body").style.visibility = "hidden"
+        }
+        else {
+          document.querySelector("body").style.visibility = "visible"
+        }
+      };
+    </script>

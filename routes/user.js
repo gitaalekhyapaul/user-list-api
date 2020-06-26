@@ -5,8 +5,8 @@ router.get("/list", userController.getList);
 router.post("/list", userController.postList);
 router.get("/add", userController.getAdd);
 router.post("/add", userController.postAdd);
-router.post("/deleteUser", userController.deleteUser);
+router.delete("/deleteUser", userController.deleteUser);
 router.get("/editUser", userController.getEditUser);
-router.post("/editUser", userController.postEditUser);
+router.put("/editUser", userController.postEditUser);
 
 module.exports = router;
